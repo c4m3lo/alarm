@@ -1,0 +1,4 @@
+alarm
+=====
+
+Alarm of shame
