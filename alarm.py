@@ -24,7 +24,6 @@ class IMAPFolder(imaplib2.IMAP4_SSL):
             if type != 'OK':
                 raise StopIteration()
             self.new_ids = data[0].split()
-            print 'found:', self.new_ids
         return self.new_ids.pop()
 
     def __exit__(self, type, value, traceback):
