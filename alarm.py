@@ -1,4 +1,5 @@
 import argparse
+import logging
 from imapfolder import IMAPFolder
 from datetime import datetime
 
@@ -39,7 +40,14 @@ if __name__ == '__main__':
     parser.add_argument('password')
     parser.add_argument('-s', '--server', default='imap.gmail.com')
     parser.add_argument('-f', '--folder', default='Jenkins')
+    parser.add_argument('-v', dest='debug_level', action='store_const',
+                        const='INFO', default='WARNING')
+    parser.add_argument('-vv', dest='debug_level', action='store_const',
+                        const='DEBUG', default='WARNING')
     args = parser.parse_args()
+    logging.basicConfig(level=args.debug_level)
+    logger = logging.getLogger('alarm')
+    logger.info("Starting up ...")
     listen_to_jenkins(server=args.server,
                       username=args.username,
                       password=args.password,
