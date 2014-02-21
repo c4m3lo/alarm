@@ -17,9 +17,6 @@ from docopt import docopt
 class RelaysAreSimpleThingsException(Exception):
     pass
 
-class HumanError(Exception):
-    pass
-
 class Relay(object):
     def __init__(self, device="/dev/ttyUSB0"):
         self.device = device
@@ -37,10 +34,7 @@ if __name__ == '__main__':
     relay = Relay()
 
     args = docopt(__doc__)
-    try:
-        command = args['COMMAND'].lower()
-    except:
-        raise HumanError("Use me properly or don't use me ata all.")
+    command = args['COMMAND'].lower()
 
     if command == 'on':
         relay.on()
