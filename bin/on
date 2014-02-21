@@ -1,0 +1,3 @@
+stty -F /dev/ttyUSB0 9600
+echo -e '\xff\x01\x01' > /dev/ttyUSB0
+
